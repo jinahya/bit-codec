@@ -1,4 +1,5 @@
 # bit-codec
+[![GitHub license](https://img.shields.io/github/license/jinahya/jinahya-codec.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Dependency Status](https://www.versioneye.com/user/projects/567d5783a7c90e00350003cb/badge.svg)](https://www.versioneye.com/user/projects/567d5783a7c90e00350003cb)
 [![Build Status](https://travis-ci.org/jinahya/bit-codec.svg?branch=develop)](https://travis-ci.org/jinahya/bit-codec)
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.jinahya/bit-codec.svg)](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22bit-codec%22)
