@@ -25,7 +25,7 @@ import java.io.IOException;
 /**
  *
  * @author Jin Kwon &lt;jinahya_at_gmail.com&gt;
- * @param <T>
+ * @param <T> element type parameter
  */
 public class ArrayCodec<T> extends ScaleCodec<T[], T> {
 

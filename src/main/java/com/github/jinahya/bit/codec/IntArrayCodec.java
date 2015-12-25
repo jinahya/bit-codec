@@ -26,19 +26,20 @@ import java.io.IOException;
  *
  * @author Jin Kwon &lt;jinahya_at_gmail.com&gt;
  */
-public class BooleanArrayCodec extends ScaleCodec<boolean[], Boolean> {
+public class IntArrayCodec extends ScaleCodec<int[], Integer> {
 
 
-    public BooleanArrayCodec(final boolean nullable, final int scale) {
+    public IntArrayCodec(final boolean nullable, final int scale,
+                         final boolean unsigned, final int size) {
 
-        super(nullable, scale, new BooleanCodec(false));
+        super(nullable, scale, new IntegerCodec(false, unsigned, size));
     }
 
 
     @Override
-    protected boolean[] decodeValue(final BitInput input) throws IOException {
+    protected int[] decodeValue(final BitInput input) throws IOException {
 
-        final boolean[] value = new boolean[readCount(input)];
+        final int[] value = new int[readCount(input)];
 
         for (int i = 0; i < value.length; i++) {
             value[i] = codec.decode(input);
@@ -49,12 +50,12 @@ public class BooleanArrayCodec extends ScaleCodec<boolean[], Boolean> {
 
 
     @Override
-    protected void encodeValue(final BitOutput output, final boolean[] value)
+    protected void encodeValue(final BitOutput output, final int[] value)
         throws IOException {
 
         writeCount(output, value.length);
 
-        for (final boolean e : value) {
+        for (final int e : value) {
             codec.encode(output, e);
         }
     }
