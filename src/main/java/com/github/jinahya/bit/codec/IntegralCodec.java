@@ -17,6 +17,10 @@
 package com.github.jinahya.bit.codec;
 
 
+import com.github.jinahya.bit.io.codec.NullableCodec;
+
+
+
 /**
  *
  * @author Jin Kwon &lt;jinahya_at_gmail.com&gt;

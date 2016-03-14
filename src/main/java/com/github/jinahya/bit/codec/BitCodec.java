@@ -17,6 +17,11 @@
 package com.github.jinahya.bit.codec;
 
 
+import com.github.jinahya.bit.io.codec.BitEncoder;
+import com.github.jinahya.bit.io.codec.BitDecoder;
+
+
+
 /**
  *
  * @author Jin Kwon &lt;jinahya_at_gmail.com&gt;

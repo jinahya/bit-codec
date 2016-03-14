@@ -17,6 +17,8 @@
 package com.github.jinahya.bit.codec;
 
 
+import com.github.jinahya.bit.io.codec.NullableCodec;
+import com.github.jinahya.bit.io.codec.BitCodec;
 import com.github.jinahya.bit.io.BitInput;
 import com.github.jinahya.bit.io.BitIoConstraints;
 import com.github.jinahya.bit.io.BitOutput;
@@ -40,23 +42,32 @@ public abstract class ScaleCodec<T, U> extends NullableCodec<T> {
             throw new NullPointerException("null input");
         }
 
-        BitIoConstraints.requireValidScale(scale);
+        BitIoConstraints.requireValidSize(true, 5, scale);
 
-        return input.readUnsignedInt(scale);
+        return input.readInt(true, scale);
     }
 
 
     public static void writeCount(final BitOutput output, final int scale,
-                                  final int cuont)
+                                  final int count)
         throws IOException {
 
         if (output == null) {
             throw new NullPointerException("null output");
         }
 
-        BitIoConstraints.requireValidCount(scale, cuont);
+        BitIoConstraints.requireValidSize(true, 5, scale);
 
-        output.writeUnsignedInt(scale, cuont);
+        if (count < 0) {
+            throw new IllegalArgumentException("count(" + count + ") < 0");
+        }
+        final int shifted = count >> scale;
+        if (shifted > 0) {
+            throw new IllegalArgumentException(
+                shifted + "(" + count + " >> " + scale + ") > 0");
+        }
+
+        output.writeInt(true, scale, count);
     }
 
 
@@ -72,7 +83,7 @@ public abstract class ScaleCodec<T, U> extends NullableCodec<T> {
 
         super(nullable);
 
-        BitIoConstraints.requireValidScale(scale);
+        BitIoConstraints.requireValidSize(true, 5, scale);
 
         if (codec == null) {
             throw new NullPointerException("null codec");

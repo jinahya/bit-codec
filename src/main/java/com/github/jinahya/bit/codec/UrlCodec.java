@@ -17,6 +17,8 @@
 package com.github.jinahya.bit.codec;
 
 
+import com.github.jinahya.bit.io.codec.BridgeCodec;
+import com.github.jinahya.bit.io.codec.StringCodec;
 import java.net.MalformedURLException;
 import java.net.URL;
 

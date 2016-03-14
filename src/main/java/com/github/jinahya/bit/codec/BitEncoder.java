@@ -13,22 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.github.jinahya.bit.codec;
-
 
 import com.github.jinahya.bit.io.BitOutput;
 import java.io.IOException;
 
-
 /**
- * An interface for encoding custom objects.
+ * An interface for encoding custom values
  *
  * @author Jin Kwon &lt;jinahya_at_gmail.com&gt;
  * @param <T> value type parameter
  */
 public interface BitEncoder<T> {
-
 
     /**
      * Encodes given value to specified output.
@@ -41,4 +37,3 @@ public interface BitEncoder<T> {
     void encode(BitOutput output, T value) throws IOException;
 
 }
-

@@ -17,6 +17,11 @@
 package com.github.jinahya.bit.codec;
 
 
+import com.github.jinahya.bit.io.codec.BridgeCodec;
+import com.github.jinahya.bit.io.codec.LongCodec;
+
+
+
 /**
  *
  * @author Jin Kwon &lt;jinahya_at_gmail.com&gt;

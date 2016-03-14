@@ -17,6 +17,8 @@
 package com.github.jinahya.bit.codec;
 
 
+import com.github.jinahya.bit.io.codec.ShortCodec;
+import com.github.jinahya.bit.io.codec.ScaleCodec;
 import com.github.jinahya.bit.io.BitInput;
 import com.github.jinahya.bit.io.BitOutput;
 import java.io.IOException;

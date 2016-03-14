@@ -17,6 +17,7 @@
 package com.github.jinahya.bit.codec;
 
 
+import com.github.jinahya.bit.io.codec.IntegralCodec;
 import com.github.jinahya.bit.io.BitInput;
 import com.github.jinahya.bit.io.BitIoConstraints;
 import com.github.jinahya.bit.io.BitOutput;
@@ -34,18 +35,14 @@ public class LongCodec extends IntegralCodec<Long> {
                      final int size) {
 
         super(nullable, unsigned,
-              BitIoConstraints.requireValidLongSize(unsigned, 6, size));
+              BitIoConstraints.requireValidSize(unsigned, 6, size));
     }
 
 
     @Override
     protected Long decodeValue(final BitInput input) throws IOException {
 
-        if (unsigned) {
-            return input.readUnsignedLong(size);
-        } else {
-            return input.readLong(size);
-        }
+        return input.readLong(unsigned, size);
     }
 
 
@@ -53,11 +50,7 @@ public class LongCodec extends IntegralCodec<Long> {
     protected void encodeValue(final BitOutput output, final Long value)
         throws IOException {
 
-        if (unsigned) {
-            output.writeUnsignedLong(size, value);
-        } else {
-            output.writeLong(size, value);
-        }
+        output.writeLong(unsigned, size, value);
     }
 
 }

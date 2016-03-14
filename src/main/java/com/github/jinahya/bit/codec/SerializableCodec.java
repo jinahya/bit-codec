@@ -17,6 +17,7 @@
 package com.github.jinahya.bit.codec;
 
 
+import com.github.jinahya.bit.io.codec.NullableCodec;
 import com.github.jinahya.bit.io.BitInput;
 import com.github.jinahya.bit.io.BitOutput;
 import java.io.IOException;
@@ -52,7 +53,7 @@ public class SerializableCodec<T extends Serializable>
                 @Override
                 public int read() throws IOException {
 
-                    return input.readUnsignedInt(8);
+                    return input.readInt(true, 8);
                 }
 
             }).readObject();
@@ -71,7 +72,7 @@ public class SerializableCodec<T extends Serializable>
             @Override
             public void write(final int b) throws IOException {
 
-                output.writeUnsignedInt(8, b);
+                output.writeInt(true, 8, b);
             }
 
         }).writeObject(value);

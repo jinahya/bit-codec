@@ -17,6 +17,8 @@
 package com.github.jinahya.bit.codec;
 
 
+import com.github.jinahya.bit.io.codec.UsAsciiCodec;
+import com.github.jinahya.bit.io.codec.BridgeCodec;
 import java.net.URI;
 import java.net.URISyntaxException;
 

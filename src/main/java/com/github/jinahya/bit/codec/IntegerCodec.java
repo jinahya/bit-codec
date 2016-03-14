@@ -17,6 +17,7 @@
 package com.github.jinahya.bit.codec;
 
 
+import com.github.jinahya.bit.io.codec.IntegralCodec;
 import com.github.jinahya.bit.io.BitInput;
 import com.github.jinahya.bit.io.BitIoConstraints;
 import com.github.jinahya.bit.io.BitOutput;
@@ -34,18 +35,14 @@ public class IntegerCodec extends IntegralCodec<Integer> {
                         final int size) {
 
         super(nullable, unsigned,
-              BitIoConstraints.requireValidIntSize(unsigned, 5, size));
+              BitIoConstraints.requireValidSize(unsigned, 5, size));
     }
 
 
     @Override
     protected Integer decodeValue(final BitInput input) throws IOException {
 
-        if (unsigned) {
-            return input.readUnsignedInt(size);
-        } else {
-            return input.readInt(size);
-        }
+        return input.readInt(unsigned, size);
     }
 
 
@@ -53,11 +50,7 @@ public class IntegerCodec extends IntegralCodec<Integer> {
     protected void encodeValue(final BitOutput output, final Integer value)
         throws IOException {
 
-        if (unsigned) {
-            output.writeUnsignedInt(size, value);
-        } else {
-            output.writeInt(size, value);
-        }
+        output.writeInt(unsigned, size, value);
     }
 
 }

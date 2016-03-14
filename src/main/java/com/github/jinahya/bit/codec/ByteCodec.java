@@ -17,6 +17,8 @@
 package com.github.jinahya.bit.codec;
 
 
+import com.github.jinahya.bit.io.codec.BridgeCodec;
+import com.github.jinahya.bit.io.codec.IntegerCodec;
 import com.github.jinahya.bit.io.BitIoConstraints;
 
 
@@ -32,7 +34,7 @@ public class ByteCodec extends BridgeCodec<Byte, Integer> {
 
         super(new IntegerCodec(
             nullable, unsigned,
-            BitIoConstraints.requireValidIntSize(unsigned, 3, size)));
+            BitIoConstraints.requireValidSize(unsigned, 3, size)));
     }
 
 
